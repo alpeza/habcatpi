@@ -1,1 +1,1 @@
-python3 $HOME/habcatpi/cli.py "$@"
+python3 $HOME/habcatpi/CLI/cli.py "$@"
