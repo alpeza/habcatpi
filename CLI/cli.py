@@ -1,6 +1,7 @@
 import click,sys
 import config
 import listings
+import shellexec as se
 
 #--- UPDATE
 @click.group()
@@ -11,9 +12,19 @@ def cli2():
 @click.option('-c', '--components', required=False, is_flag=True, help='Update de componentes')
 @click.option('-d', '--devices', required=False, is_flag=True, help='Update de dispoositivos')
 @click.option('-p', '--habcatpi', required=False, is_flag=True, help='Update de habcatpi')
-@click.option('-a', '--all', required=False, is_flag=True, help='Update de todos los elementos')
-def update(habcatev,components):
+@click.option('-a', '--uall', required=False, is_flag=True, help='Update de todos los elementos')
+def update(habcatev,components,devices,habcatpi,uall):
     """Realiza el update de librerías"""
+    if habcatev:
+        se.execShell('updateHabcatev')
+    if components:
+        se.execShell('updateComponents')
+    if devices:
+        se.execShell('updateDevices')
+    if uall:
+        se.execShell('updateComponents')
+        se.execShell('updateDevices')
+        se.execShell('updateHabcatev')
 
 #--- DEVICES
 @click.group()
