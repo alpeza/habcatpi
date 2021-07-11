@@ -1,4 +1,4 @@
-main_path='$HOME/habcat'
+main_path='/home/pi/habcat'
 components_path=main_path + '/components' 
 devices_path=main_path + '/devices' 
 
