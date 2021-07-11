@@ -4,6 +4,7 @@ prinstep(){
     echo  "STEP $1 -> $2"
     echo '*************************************************'
 }
+cd $HOME
 
 prinstep '0' 'Update de repositorios ...'
 sudo apt-get update
@@ -11,6 +12,18 @@ sudo apt-get update
 prinstep '1' 'Instalando git ...'
 set -x
 sudo apt-get install -y git 
+set +x
+
+prinstep '1' 'Descargndo repositorios ...'
+set -x
+git clone https://github.com/alpeza/habcatpi.git
+chmod 777 -R habcatpi
+sudo echo 'PATH=~/habcatpi/CLI/:$PATH' >> .bashrc
+sudo echo "alias habcat='habcat.sh'" >> .bashrc
+source .bashrc
+cd habcatpi/CLI 
+pip3 install -r requirements.txt
+cd $HOME
 set +x
 
 prinstep '2' 'Instalando MQTT ...'
@@ -38,7 +51,8 @@ cd $HOME
 mkdir habcat
 cd habcat
 mkdir components
-mkdir mydevices
+mkdir devices
+mkdir localdevices
 cd $HOME
 
 prinstep '7' 'Rebooting ...'

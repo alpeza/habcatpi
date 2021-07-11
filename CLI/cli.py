@@ -9,6 +9,9 @@ def cli2():
 @cli2.command()
 @click.option('-e', '--habcatev', required=False, is_flag=True, help='Update de habcatev')
 @click.option('-c', '--components', required=False, is_flag=True, help='Update de componentes')
+@click.option('-d', '--devices', required=False, is_flag=True, help='Update de dispoositivos')
+@click.option('-p', '--habcatpi', required=False, is_flag=True, help='Update de habcatpi')
+@click.option('-a', '--all', required=False, is_flag=True, help='Update de todos los elementos')
 def update(habcatev,components):
     """Realiza el update de librerías"""
 
